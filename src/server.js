@@ -28,7 +28,3 @@ app.get("/products/:id", async (req, res) => {
   let productsById = todos.find((eL) => eL.id === id);
   res.send(productsById);
 });
-
-// server.on("error", (error) => {
-//   console.log(`error del servidor ${error}`);
-// });
