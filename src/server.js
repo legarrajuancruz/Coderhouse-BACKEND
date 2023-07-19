@@ -4,10 +4,13 @@ import ProductManager from "./components/ProductManager.js";
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
+const PORT = 8080;
+const server = app.listen(PORT, () => {
+  console.log(`Express Server en Localhost ${PORT}`);
+});
+
 const productos = new ProductManager();
 const readProducts = productos.readProducts();
-
-//console.log(await readProducts);
 
 app.get("/products", async (req, res) => {
   let limit = parseInt(req.query.limit);
@@ -26,11 +29,6 @@ app.get("/products/:id", async (req, res) => {
   res.send(productsById);
 });
 
-const PORT = 8080;
-const server = app.listen(PORT, () => {
-  console.log(`Express por Localhost ${server.address().port}`);
-});
-
-server.on("error", (error) => {
-  console.log(`error del servidor ${error}`);
-});
+// server.on("error", (error) => {
+//   console.log(`error del servidor ${error}`);
+// });

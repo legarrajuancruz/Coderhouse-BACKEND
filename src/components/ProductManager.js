@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 
 export default class ProductManager {
   constructor() {
-    this.path = "./Products.json";
+    this.path = "src/Products.json";
     this.products = [];
   }
   static id = 0;
