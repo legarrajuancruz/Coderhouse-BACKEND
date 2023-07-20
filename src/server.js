@@ -2,6 +2,7 @@ import express from "express";
 import ProductManager from "./components/ProductManager.js";
 
 const app = express();
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const PORT = 8080;
