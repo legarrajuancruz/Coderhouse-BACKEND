@@ -35,13 +35,17 @@ class ProductManager {
   };
 
   getProductsById = async (id) => {
-    let products = await this.readProducts();
-    let busquedaById = products.find((eL) => eL.id === id);
+    let busquedaById = await this.existe(id);
     if (!busquedaById) {
       return "Producto no encontrado";
     } else {
       return busquedaById;
     }
+  };
+
+  existe = async (id) => {
+    let products = await this.readProducts();
+    return products.find((eL) => eL.id === id);
   };
 
   deleteById = async (id) => {
@@ -51,9 +55,24 @@ class ProductManager {
     if (busquedaId) {
       let filtrados = products.filter((eL) => eL.id != id);
       await this.writeProducts(filtrados);
-      return `"Producto eliminado"`;
+      return `Producto eliminado`;
     }
     return "Producto no existe";
+  };
+
+  updateProduct = async (id, nuevo) => {
+    let respuesta = await fs.readFile(this.path, "utf-8");
+    let parseado = JSON.parse(respuesta);
+
+    let busquedaFiltrada = parseado.filter((eL) => eL.id != id);
+
+    console.log("NUEVO ARRAY");
+    let modificado = [{ ...nuevo, id: id }, ...busquedaFiltrada];
+
+    console.log(modificado);
+
+    await fs.writeFile(this.path, JSON.stringify(modificado, null, 2, `\t`));
+    return modificado[id];
   };
 }
 

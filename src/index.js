@@ -40,6 +40,15 @@ app.delete("/Products/:id", async (req, res) => {
   res.send(await product.deleteById(id));
 });
 
+/*============
+-     PUT    -
+============*/
+app.put("/Products/:id", async (req, res) => {
+  let id = parseInt(req.params.id);
+  let nuevo = req.body;
+  res.send(await product.updateProduct(id, nuevo));
+});
+
 app.listen(PORT, () => {
   console.log(`Server port on ${PORT}`);
 });
