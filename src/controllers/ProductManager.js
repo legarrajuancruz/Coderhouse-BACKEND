@@ -5,7 +5,7 @@ class ProductManager {
     this.path = "./src/dbjson/products.json";
   }
 
-  /*============
+  /*==========
 - READ JSON  -
 ============*/
   readProducts = async () => {
@@ -14,12 +14,15 @@ class ProductManager {
   };
 
   /*============
-- WRITE JSON -
-============*/
+-  WRITE JSON  -
+==============*/
   writeProducts = async (product) => {
     await fs.writeFile(this.path, JSON.stringify(product));
   };
 
+  /*=============
+- ADD Products  -
+===============*/
   addProducts = async (product) => {
     let productsOld = await this.readProducts();
     product.id = productsOld.length;
@@ -30,10 +33,16 @@ class ProductManager {
     return "Producto agregado";
   };
 
+  /*=============
+- GET Products  -
+===============*/
   getProducts = async () => {
     return await this.readProducts();
   };
 
+  /*================
+- GET Products ID -
+==================*/
   getProductsById = async (id) => {
     let busquedaById = await this.existe(id);
     if (!busquedaById) {
@@ -43,11 +52,17 @@ class ProductManager {
     }
   };
 
+  /*================
+- EXISTE Producto ? -
+==================*/
   existe = async (id) => {
     let products = await this.readProducts();
     return products.find((eL) => eL.id === id);
   };
 
+  /*================
+-     DELETE Id     -
+==================*/
   deleteById = async (id) => {
     let products = await this.readProducts();
     let busquedaId = products.some((eL) => eL.id === id);
@@ -60,19 +75,24 @@ class ProductManager {
     return "Producto no existe";
   };
 
+  /*================
+-     UPDATE Id     -
+==================*/
   updateProduct = async (id, nuevo) => {
-    let respuesta = await fs.readFile(this.path, "utf-8");
-    let parseado = JSON.parse(respuesta);
+    let parseado = await this.readProducts();
+    let productoExiste = await this.existe(id);
 
-    let busquedaFiltrada = parseado.filter((eL) => eL.id != id);
+    if (!productoExiste) {
+      return "Producto no existe";
+    } else {
+      let busquedaFiltrada = parseado.filter((eL) => eL.id != id);
 
-    console.log("NUEVO ARRAY");
-    let modificado = [{ ...nuevo, id: id }, ...busquedaFiltrada];
+      let modificado = [{ ...nuevo, id: id }, ...busquedaFiltrada];
 
-    console.log(modificado);
+      await fs.writeFile(this.path, JSON.stringify(modificado, null, 2, `\t`));
 
-    await fs.writeFile(this.path, JSON.stringify(modificado, null, 2, `\t`));
-    return modificado[id];
+      return `Producto actualizado`;
+    }
   };
 }
 
