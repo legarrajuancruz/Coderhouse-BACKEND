@@ -1,5 +1,6 @@
 import { Router } from "express";
 import ProductManager from "../controllers/ProductManager.js";
+import { uploader } from "../utils.js";
 
 const ProductRouter = Router();
 const product = new ProductManager();
@@ -22,8 +23,9 @@ ProductRouter.get(`/:id`, async (req, res) => {
 /*============
   -    POST    -
   ============*/
-ProductRouter.post("/", async (req, res) => {
+ProductRouter.post("/", uploader.single("file"), async (req, res) => {
   let newProduct = req.body;
+  newProduct.img = req.file.path;
   res.send(await product.addProducts(newProduct));
 });
 

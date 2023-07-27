@@ -2,22 +2,22 @@
   {
     "Title": "Leche",
     "Description": "La serenisima",
-    "Price": 550,
-    "thumbnail": "Sin imagen",
+    "Price": "750",
+    "img": "C:\\Users\\LEGA\\Desktop\\Coderhouse - BACKEND\\src\\public\\img\\leche.jpg",
     "id": 0
   },
   {
     "Title": "Miel",
     "Description": "Liquida",
-    "Price": 350,
-    "thumbnail": "Sin imagen",
+    "Price": "350\n",
+    "img": "C:\\Users\\LEGA\\Desktop\\Coderhouse - BACKEND\\src\\public\\img\\miel.jpeg",
     "id": 1
   },
   {
     "Title": "Jabon",
     "Description": "Liquido",
-    "Price": 750,
-    "thumbnail": "Sin imagen",
+    "Price": "750",
+    "img": "C:\\Users\\LEGA\\Desktop\\Coderhouse - BACKEND\\src\\public\\img\\jabon.jpeg",
     "id": 2
   }
 ]
