@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(`/api/products`, ProductRouter);
 app.use(`/api/carts`, CartRouter);
+app.use(express.static(`./src/public`));
 
 app.listen(PORT, () => {
   console.log(`Server port on ${PORT}`);

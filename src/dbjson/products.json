@@ -1,37 +1,23 @@
 [
   {
-    "Title": "test",
-    "Description": "test",
-    "Price": 550,
-    "thumbnail": "Sin imagen",
-    "id": 2
-  },
-  {
-    "Title": "test",
-    "Description": "test",
-    "Price": 550,
-    "thumbnail": "Sin imagen",
-    "id": 1
-  },
-  {
     "Title": "Leche",
     "Description": "La serenisima",
-    "Price": 350,
+    "Price": 550,
     "thumbnail": "Sin imagen",
     "id": 0
   },
   {
-    "Title": "Leche",
-    "Description": "La serenisima",
+    "Title": "Miel",
+    "Description": "Liquida",
     "Price": 350,
     "thumbnail": "Sin imagen",
-    "id": 3
+    "id": 1
   },
   {
-    "Title": "Leche",
-    "Description": "La serenisima",
-    "Price": 350,
+    "Title": "Jabon",
+    "Description": "Liquido",
+    "Price": 750,
     "thumbnail": "Sin imagen",
-    "id": 5
+    "id": 2
   }
 ]
