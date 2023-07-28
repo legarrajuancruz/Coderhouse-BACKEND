@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(`/api/products`, ProductRouter);
 app.use(`/api/carts`, CartRouter);
+
 //app.use(express.static(`./src/public/img`));
 app.use(express.static(__dirname + `/public/img`));
 
